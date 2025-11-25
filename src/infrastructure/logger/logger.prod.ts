@@ -1,5 +1,7 @@
+import { winstonLogger } from "../../utils/winston";
+
 export class LoggerProd {
   info(message: string) {
-    console.log(`Logger Prod: ${message}`);
+    winstonLogger.info(`Logger Prod: ${message}`);
   }
 }
