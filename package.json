@@ -6,13 +6,15 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@prisma/client": "5.15.0",
     "elysia": "latest",
     "inversify": "^7.10.4",
     "reflect-metadata": "^0.2.2",
     "winston": "^3.18.3"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "5.15.0"
   },
   "module": "src/index.js"
 }
