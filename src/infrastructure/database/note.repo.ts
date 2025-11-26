@@ -1,4 +1,6 @@
-import { INote, Note } from "../../interfaces/entities";
+import { INote } from "../../interfaces/entities";
+import { Note } from "@prisma/client";
+import { prisma } from "../../utils/prisma";
 import { injectable } from "inversify";
 import "reflect-metadata";
 
@@ -10,20 +12,14 @@ export class NoteRepo implements INote {
     // Option 2: mongoose.find()
     // Option 3: SQL Raw `SELECT * FROM user`
 
-    return [
-      {
-        id: "test123",
-        content: "test",
-        isDone: false,
-      },
-    ];
+    return await prisma.note.findMany();
   }
 
-  async getOneById(): Promise<Note> {
-    return {
-      id: "test123",
-      content: "test",
-      isDone: false,
-    };
+  async getOneById(id: number): Promise<Note | null> {
+    return await prisma.note.findFirst({
+      where: {
+        id,
+      },
+    });
   }
 }
